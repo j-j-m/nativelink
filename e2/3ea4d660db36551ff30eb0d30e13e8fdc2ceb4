@@ -1,0 +1,21 @@
+nativelink-store/tests/gcs_store_test.rs
+  s_6fd8ba091897ed::t_de892eef520c6d 878-1022
+nativelink-store/src/gcs_store.rs
+  s_6fd8ba091897ed::t_9ca24b53feb9ac 443-449
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "e23ea4d660db36551ff30eb0d30e13e8fdc2ceb4",
+  "prompts": {},
+  "sessions": {
+    "s_6fd8ba091897ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a9718dc-cffd-458a-b719-cbf3f3007574",
+        "model": "claude-fable-5"
+      },
+      "human_author": "JJ Martin <martinjaco@gmail.com>"
+    }
+  }
+}
