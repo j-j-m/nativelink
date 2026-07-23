@@ -1,0 +1,21 @@
+.github/workflows/build-fix-image.yaml
+  s_6fd8ba091897ed::t_ee0a3727a397c2 1-46
+nativelink-store/src/gcs_store.rs
+  s_6fd8ba091897ed::t_a9543e9bd806b6 443-449
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "4e60eb9d4099ca20a2366e131b64a7bde7e93d3f",
+  "prompts": {},
+  "sessions": {
+    "s_6fd8ba091897ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a9718dc-cffd-458a-b719-cbf3f3007574",
+        "model": "claude-fable-5"
+      },
+      "human_author": "JJ Martin <martinjaco@gmail.com>"
+    }
+  }
+}
