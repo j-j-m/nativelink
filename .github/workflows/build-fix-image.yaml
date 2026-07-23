@@ -1,0 +1,46 @@
+name: Build GCS empty-chunk fix image
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build release binary (glibc-matched to distroless cc-debian12)
+        run: |
+          docker run --rm -v "$PWD":/src -w /src \
+            -e CARGO_TARGET_DIR=/src/target \
+            rust:1-bookworm cargo build --release -p nativelink
+          mkdir -p image-ctx
+          cp target/release/nativelink image-ctx/nativelink
+
+      - name: Write Dockerfile
+        run: |
+          cat > image-ctx/Dockerfile <<'EOF'
+          FROM gcr.io/distroless/cc-debian12:nonroot
+          COPY nativelink /usr/local/bin/nativelink
+          ENTRYPOINT ["/usr/local/bin/nativelink"]
+          EOF
+
+      - name: Login to ghcr
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        run: |
+          TAG="ghcr.io/${{ github.repository_owner }}/nativelink:gcs-empty-chunk-fix-${GITHUB_SHA::12}"
+          docker build -t "$TAG" image-ctx
+          docker push "$TAG"
+          echo "$TAG" >> "$GITHUB_STEP_SUMMARY"
