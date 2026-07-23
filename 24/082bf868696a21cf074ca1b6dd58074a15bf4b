@@ -1,0 +1,19 @@
+.github/workflows/build-fix-image.yaml
+  s_6fd8ba091897ed::t_10a5cd6173b5eb 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.15",
+  "base_commit_sha": "24082bf868696a21cf074ca1b6dd58074a15bf4b",
+  "prompts": {},
+  "sessions": {
+    "s_6fd8ba091897ed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5a9718dc-cffd-458a-b719-cbf3f3007574",
+        "model": "claude-fable-5"
+      },
+      "human_author": "JJ Martin <martinjaco@gmail.com>"
+    }
+  }
+}
